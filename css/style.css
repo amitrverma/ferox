@@ -1,19 +1,14 @@
-@font-face {
-    font-family: 'Aptos';
-    src: url('Aptos.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
 
 body {
-    font-family: 'Aptos', sans-serif;
+    font-family: Quicksand, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white; /* White background */
-    color: #333;
+    background-color: #051645; /* White background */
+    color: white;
 }
 header {
-    background: white; /* White background */
+    background: #051645; /* White background */
     border-bottom: 3px solid gold; /* Gold demarcation */
     padding: 1rem 0;
     display: flex;
