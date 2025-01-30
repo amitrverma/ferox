@@ -32,7 +32,7 @@ header nav ul li {
     margin: 0 1rem;
 }
 header nav ul li a {
-    color: #007bff; /* Link color */
+    color: white; /* Link color */
     text-decoration: none;
 }
 main {
@@ -44,7 +44,6 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem 0;
-    position: absolute;
     bottom: 0;
     width: 100%;
 }
