@@ -82,8 +82,8 @@
             margin-top: 10px;
         }
 
-        /* Fixed Navigation */
-    header {
+ /* Navigation Bar Styling */
+ header {
         position: fixed;
         top: 0;
         left: 0;
@@ -92,6 +92,35 @@
         padding: 15px 0;
         z-index: 1000;
     }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        display: inline;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.2em;
+        padding: 10px 15px;
+        transition: background 0.3s;
+    }
+
+    /* Active class for highlighting */
+    nav ul li a.active {
+        background-color: #25D366; /* Highlight with WhatsApp Green */
+        color: black;
+        border-radius: 5px;
+    }
+
 
     /* Section Adjustments to prevent overlap */
     section {
@@ -113,17 +142,117 @@
         background-color: #0a1744;
         padding: 50px 0;
     }
+
+    /* Floating Chat Button */
+    .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #444;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating Chat Window */
+        .chat-window {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            overflow: hidden;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            background: #1d1d70;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Chat Message Bubble */
+        .chat-bubble {
+            background: #ddd;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            position: relative;
+        }
+
+        .chat-bubble::before {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 15px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ddd transparent;
+        }
+
+        /* Chat Form */
+        .chat-form {
+            padding: 15px;
+        }
+
+        .chat-form input, .chat-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .chat-form button {
+            width: 100%;
+            background: black;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Close Button */
+        .close-chat {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #777;
+            border: none;
+            color: white;
+            font-size: 16px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#home" class="active">Home</a></li> <!-- Active class highlights this item -->
-                <li><a href="#service">Service Offering</a></li>
-                <li><a href="careers.html">Careers</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#service" class="nav-link">Service Offering</a></li>
+                <li><a href="#careers" class="nav-link">Careers</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -168,7 +297,31 @@
         </div>
     </div>
 </section>
-
+<section id="about" style="width: 100%; padding: 50px 0; background-color: #DCDCDC; text-align: center;">
+    <!-- Left Side: Image -->
+    <div style="width: 40%; padding: 20px; display: flex; justify-content: center; align-items: center;">
+       <img src="./images/about.jpg" alt="Contact Header" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 5px;">
+   </div>
+   
+   <!-- Right Side: Content -->
+   <div style="width: 50%; display: flex; flex-direction: column; text-align: left">
+       <div style="width: 100%; margin: 10px; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+           <h1>What we do?</h1>
+           <p>At Ferox tech services, we believe in creating tailored solutions that not only meet your immediate needs but also unlock opportunities for growth and transformation. We provide certainty by solving your toughest challenges.<br>
+           As a Business Transformation and Services partner, Ferox helps in solving operational challenges and driving strategic growth journeys.<br>
+          We empower clients with AI solutions across businesses to navigate the complexities of modern industries.
+            <h2>Ferox Values</h2>
+           <p>Our values are the foundation of our identity and behavior. Our vision and mission derive our values:</p>
+           <ul>
+               <li><strong>Fearless:</strong> Embody a culture that encourages experimentation and calculated risk-taking.</li>
+               <li><strong>Excellence:</strong> Strive for outstanding performance and quality in everything you do.</li>
+               <li><strong>Resilience:</strong> Foster a growth mindset and ability to bounce back from challenges and setbacks.</li>
+               <li><strong>Openness:</strong> Promote transparency, honesty, and open communication across the organization.</li>
+               <li><strong>X-factor:</strong> Encourage innovation, creativity, and thinking outside the box to stay ahead of the curve.</li>
+           </ul>
+       </div>
+   </div>
+   </section>
 <!-- Service Section -->
 <section id="service">
     <div class="service-container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 90%; max-width: 1300px; gap: 40px; text-align: center;">
@@ -209,9 +362,273 @@
         </div>            
     </div>
 </section>
+<section id="security" style="width: 100%; padding: 50px 0; background-color: #DCDCDC; text-align: center;">
     
+    <!-- Section Title -->
+    <h2 style="font-size: 2em; color: #0a1744; margin-bottom: 20px;">
+        We adhere to strict data and IT security standards
+    </h2>
+
+    <div style="display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: auto; text-align: left;">
+        
+        <!-- Left Column: ISO 27001 -->
+        <div style="flex: 1; min-width: 400px; padding: 20px; text-align: center;">
+            <h3 style="font-size: 1.5em; color: #0a1744;">ISO 27001</h3>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/ISO_IEC_27001.svg" alt="ISO 27001 Logo" style="max-width: 200px; margin: 20px auto;">
+            
+            <p style="font-size: 1em; color: #333;">
+                ISO 27001 is an international standard that provides guidance for establishing and maintaining an 
+                information security management system (ISMS). It’s a globally recognized framework that helps 
+                organizations protect their sensitive data and other information.
+            </p>
+
+            <h4 style="color: #0a1744;">What does ISO 27001 certification mean?</h4>
+            <ul style="color: #333; list-style-type: disc; padding-left: 20px;">
+                <li>Certification demonstrates that an organization has put in place a system to manage risks related to data security.</li>
+                <li>Boosts investor confidence and strengthens partnerships.</li>
+            </ul>
+
+            <h4 style="color: #0a1744;">How often is ISO 27001 revised?</h4>
+            <p style="color: #333;">
+                First published in 2005, revised in 2013, and most recently in 2022.
+            </p>
+        </div>
+
+        <!-- Right Column: Azure Compliance -->
+        <div style="flex: 1; min-width: 400px; padding: 20px; text-align: center;">
+            <h3 style="font-size: 1.5em; color: #0a1744;">We operate purely on cloud</h3>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure Logo" style="max-width: 200px; margin: 20px auto;">
+            
+            <h4 style="color: #0a1744;">What Azure can be used for</h4>
+            <ul style="color: #333; list-style-type: disc; padding-left: 20px;">
+                <li><strong>Application development:</strong> Build new applications or scale existing ones.</li>
+                <li><strong>Data storage:</strong> Store data using disk, blob, file, or queue storage.</li>
+                <li><strong>Analytics:</strong> Use machine learning and real-time analytics.</li>
+                <li><strong>Networking:</strong> Integrate with Active Directory to manage access.</li>
+                <li><strong>AI:</strong> Create intelligent apps with speech, vision, and decision-making capabilities.</li>
+                <li><strong>IoT:</strong> Connect devices to the cloud for data collection.</li>
+            </ul>
+
+            <h4 style="color: #0a1744;">Benefits of Azure</h4>
+            <ul style="color: #333; list-style-type: disc; padding-left: 20px;">
+                <li><strong>Scalability:</strong> Scale applications globally with ease.</li>
+                <li><strong>Flexibility:</strong> Use open-source technologies.</li>
+                <li><strong>Security:</strong> Multi-factor authentication & security features.</li>
+                <li><strong>Compliance:</strong> Use compliance offerings to meet regulatory requirements.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+    <section id="careers">
+        <h1 style="text-align: center; font-size: 2em; margin-bottom: 20px;">Grow a rewarding career with Ferox Tech Services</h1>
+        <div style="display: flex; max-width: 1200px; width: 100%; align-items: center; gap: 40px; flex-wrap: wrap;">
+            <!-- Left Side: Image -->
+            <div style="flex: 1; display: flex; justify-content: center;">
+                <img src="https://img1.wsimg.com/isteam/ip/820fd574-db3e-4828-aa54-936430e4d0d9/blob-d4345f9.png/:/cr=t:17.57%25,l:0%25,w:100%25,h:64.86%25/rs=w:400,h:533,cg:true" alt="Career Growth" style="width: 100%; max-width: 400px; border-radius: 5px; object-fit: cover;">
+            </div>
+            
+            <!-- Right Side: Content -->
+            <div style="flex: 2; display: flex; flex-direction: column; gap: 20px;">
+                <h2>Customer Services Expertise</h2>
+                <p>We help you build a rewarding career in customer service, email, chat and contact center operations. Work with industry experts and leaders in the field.</p>
+                
+                <h2>Finance & Accounts and Financial Services</h2>
+                <p>We have deep domain expertise in Finance and Accounting operations, kick-start your journey in F&A operations with a set of exciting opportunities.</p>
+                
+                <h2>Health Care & Insurance</h2>
+                <p>Our leaders bring decades of experience managing complex insurance businesses including healthcare processing for North America geographies. Explore opportunities with us.</p>
+                
+                <h2>Project Management</h2>
+                <p>With over 40+ years of combined experience in project & program management services, we will help you build your skills and master project management.</p>
+                
+                <h2>Automation</h2>
+                <p>We integrate automation in everything we do. Join us to become a brand ambassador of how technology can support human decision-making, supporting superior customer outcomes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="careers" style="width: 100%; padding: 50px; background-color: #DCDCDC; text-align: center;">
     
+        <!-- Section Title -->
+        <h2 style="font-size: 2em; color: #0a1744; margin-bottom: 30px;">We're Hiring!</h2>
     
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: auto; text-align: left;">
+            
+            <!-- Left Column: Job Listings -->
+            <div style="flex: 1; min-width: 400px; padding: 20px;">
+                <h3 style="font-size: 1.2em; font-weight: bold;">Join Our Team</h3>
+                <p>If you're interested in one of our open positions, start by applying here and attaching your resume.</p>
+    
+                <h4 style="color: #0a1744; font-weight: bold;">24th Jan 2025 - Finance Accounts Payable Representative</h4>
+                <p style="color: #333; font-size: 0.95em;">
+                    1 to 2 years experience managing and processing invoices, payments, and expense reports. Ensuring 
+                    accurate and timely vendor payments while maintaining compliance with company policies. Reconcile accounts, 
+                    resolve payment discrepancies, and support month-end financial close activities.
+                </p>
+    
+                <h4 style="color: #0a1744; font-weight: bold;">20th Jan 2025 - Insurance Claims Representative</h4>
+                <p style="color: #333; font-size: 0.95em;">
+                    2 to 4 years experience reviewing, evaluating, and processing insurance claims accurately, ensuring compliance 
+                    with policy terms and company guidelines. Communicate with claimants, adjusters, and providers to resolve 
+                    discrepancies and expedite claim resolutions.
+                </p>
+    
+                <h4 style="color: #0a1744; font-weight: bold;">18th Jan 2025 - Team Manager, Insurance Claims (Geo-USA)</h4>
+            </div>
+    
+            <!-- Right Column: Job Application Form -->
+            <div style="flex: 1; min-width: 400px; padding: 20px;">
+                <h3 style="font-size: 1.2em; font-weight: bold;">Apply Now</h3>
+                <form style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" placeholder="Name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <input type="text" placeholder="Phone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <input type="email" placeholder="Email*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <textarea placeholder="Message" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; height: 100px;"></textarea>
+                    
+                    <!-- File Upload -->
+                    <label style="display: flex; align-items: center; gap: 10px; font-size: 0.9em; cursor: pointer;">
+                        <input type="file" style="display: none;">
+                        <span>📎 Attach Resume</span>
+                        <span style="color: gray;">(Attachments: 0)</span>
+                    </label>
+    
+                    <!-- Submit Button -->
+                    <button type="submit" style="width: 100%; padding: 15px; background-color: black; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
+                        SUBMIT APPLICATION
+                    </button>
+                </form>
+    
+                <p style="font-size: 0.8em; color: gray; margin-top: 10px;">
+                    This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="contact" style="display: flex; justify-content: space-between; align-items: center; padding: 50px; background-color: #0a1744; color: white;">
+
+        <!-- Left Section: Contact Details -->
+        <div class="left-section" style="width: 50%; display: flex; flex-direction: column; gap: 15px;">
+             <!-- Contact Title -->
+        <h1>CONTACT US</h1>
+        <p><strong>Better yet, see us in person!</strong></p>
+        <p>We love our customers, we will be happy to meet you in person or virtually feel free to reach us on -</p>
+        
+        <p>USA: +1 xxxxxxxxxx</p>
+        <p>India: +91 8826630055</p>
+    
+        <p>We are happy to meet virtually, reach us at 
+            <a href="mailto:enquiry@ferox-ts.com" style="color: #00E676;">enquiry@ferox-ts.com</a>
+        </p>
+    
+        <!-- Centered WhatsApp Button -->
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <a href="https://api.whatsapp.com/send?phone=918826630055" target="_blank"
+               style="display: flex; align-items: center; justify-content: center; background-color: white; color: black; padding: 15px 20px; font-size: 18px; font-weight: bold; border-radius: 30px; text-decoration: none; width: 280px; box-shadow: 0px 4px 8px rgba(0,0,0,0.2);">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                     style="width: 24px; height: 24px; margin-right: 10px;">
+                Message us on WhatsApp
+            </a>
+        </div>
+    
+        <p><strong>Ferox Tech Services - Pune, India</strong></p>
+        <p><strong>Registered Office:</strong> B-401, Yin Yang, Grant Road, Kharadi, Pune, Maharashtra, India - 411014</p>
+        </div>
+    
+        <!-- Right Section: Image & Social Media -->
+        <div class="right-section" style="width: 50%; text-align: center;">
+            <img src="https://img1.wsimg.com/isteam/stock/5104/:/rs=w:1280,h:850" alt="Contact Header" 
+                 style="width: 100%; max-height: 500px; object-fit: cover; margin-bottom: 20px;">
+            
+            <h2>Follow us on</h2>
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                <a href="https://wa.me/YOUR_PHONE" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40px">
+                </a>
+                <a href="https://twitter.com/YOUR_HANDLE" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" alt="Twitter X" width="40px">
+                </a>
+                <a href="https://www.facebook.com/YOUR_PAGE" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="40px">
+                </a>
+                <a href="https://www.instagram.com/YOUR_HANDLE" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="40px">
+                </a>
+                <a href="https://www.linkedin.com/in/YOUR_PROFILE" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="40px">
+                </a>
+                <a href="https://www.youtube.com/YOUR_CHANNEL" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" width="40px">
+                </a>
+            </div>
+            
+            
+        </div>
+    </section>
+    
+     <!-- Floating Chat Button -->
+     <div class="chat-button" onclick="toggleChat()">💬</div>
+
+     <!-- Chat Window -->
+     <div class="chat-window" id="chatWindow">
+         <div class="chat-header">
+             Ferox Tech Services
+             <button class="close-chat" onclick="toggleChat()">×</button>
+         </div>
+ 
+         <div class="chat-bubble">
+             Hi! Let us know how we can help and we’ll respond shortly.
+         </div>
+ 
+         <div class="chat-form">
+             <input type="text" placeholder="Name*" required>
+             <input type="email" placeholder="Email*" required>
+             <textarea placeholder="How can we help?*" required></textarea>
+             <button type="submit">SEND</button>
+         </div>
+ 
+         <p style="font-size: 0.8em; text-align: center; color: gray; padding: 10px;">
+             This site is protected by reCAPTCHA and the 
+             <a href="#" style="color: blue; text-decoration: none;">Privacy Policy</a> 
+             and 
+             <a href="#" style="color: blue; text-decoration: none;">Terms of Service</a> apply.
+         </p>
+     </div>
+ 
+     <script>
+         function toggleChat() {
+             const chatWindow = document.getElementById("chatWindow");
+             chatWindow.style.display = chatWindow.style.display === "block" ? "none" : "block";
+         }
+    
+        // Highlight Active Navigation Item on Scroll
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
+    
+            function changeActiveLink() {
+                let currentSection = "";
+    
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        currentSection = section.getAttribute("id");
+                    }
+                });
+    
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href").substring(1) === currentSection) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+    
+            window.addEventListener("scroll", changeActiveLink);
+        });
+    </script>
     </main>
     
     <footer>
