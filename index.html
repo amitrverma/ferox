@@ -506,32 +506,32 @@
                 <h4 style="color: #0a1744; font-weight: bold;">18th Jan 2025 - Team Manager, Insurance Claims (Geo-USA)</h4>
             </div>
     
-            <!-- Right Column: Job Application Form -->
-            <div style="flex: 1; min-width: 400px; padding: 20px;">
-                <h3 style="font-size: 1.2em; font-weight: bold;">Apply Now</h3>
-                <form style="display: flex; flex-direction: column; gap: 10px;">
-                    <input type="text" placeholder="Name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                    <input type="text" placeholder="Phone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                    <input type="email" placeholder="Email*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                    <textarea placeholder="Message" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; height: 100px;"></textarea>
-                    
-                    <!-- File Upload -->
-                    <label style="display: flex; align-items: center; gap: 10px; font-size: 0.9em; cursor: pointer;">
-                        <input type="file" style="display: none;">
-                        <span>📎 Attach Resume</span>
-                        <span style="color: gray;">(Attachments: 0)</span>
-                    </label>
-    
-                    <!-- Submit Button -->
-                    <button type="submit" style="width: 100%; padding: 15px; background-color: black; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
-                        SUBMIT APPLICATION
-                    </button>
-                </form>
-    
-                <p style="font-size: 0.8em; color: gray; margin-top: 10px;">
-                    This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-                </p>
-            </div>
+ <!-- Right Column: Job Application Form -->
+<div style="flex: 1; min-width: 400px; padding: 20px;">
+    <h3 style="font-size: 1.2em; font-weight: bold;">Apply Now</h3>
+    <form id="jobApplicationForm" style="display: flex; flex-direction: column; gap: 10px;">
+        <input type="text" id="name" name="name" placeholder="Name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <input type="text" id="phone" name="phone" placeholder="Phone" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <input type="email" id="email" name="email" placeholder="Email*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <textarea id="message" name="message" placeholder="Message" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; height: 100px;"></textarea>
+
+        <!-- File Upload -->
+        <label style="display: flex; align-items: center; gap: 10px; font-size: 0.9em; cursor: pointer;">
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required style="display: none;">
+            <span>📎 Attach Resume</span>
+            <span id="fileName" style="color: gray;">(Attachments: 0)</span>
+        </label>
+
+        <!-- Submit Button -->
+        <button type="submit" style="width: 100%; padding: 15px; background-color: black; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
+            SUBMIT APPLICATION
+        </button>
+    </form>
+
+    <p style="font-size: 0.8em; color: gray; margin-top: 10px;">
+        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+    </p>
+</div>
         </div>
     </section>
     
@@ -600,33 +600,106 @@
      <!-- Floating Chat Button -->
      <div class="chat-button" onclick="toggleChat()">💬</div>
 
-     <!-- Chat Window -->
-     <div class="chat-window" id="chatWindow">
-         <div class="chat-header">
-             Ferox Tech Services
-             <button class="close-chat" onclick="toggleChat()">×</button>
-         </div>
- 
-         <div class="chat-bubble">
-             Hi! Let us know how we can help and we’ll respond shortly.
-         </div>
- 
-         <div class="chat-form">
-             <input type="text" placeholder="Name*" required>
-             <input type="email" placeholder="Email*" required>
-             <textarea placeholder="How can we help?*" required></textarea>
-             <button type="submit">SEND</button>
-         </div>
- 
-         <p style="font-size: 0.8em; text-align: center; color: gray; padding: 10px;">
-             This site is protected by reCAPTCHA and the 
-             <a href="#" style="color: blue; text-decoration: none;">Privacy Policy</a> 
-             and 
-             <a href="#" style="color: blue; text-decoration: none;">Terms of Service</a> apply.
-         </p>
-     </div>
- 
-     <script>
+    <!-- Chat Window -->
+<div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+        Ferox Tech Services
+        <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+
+    <div class="chat-bubble">
+        Hi! Let us know how we can help and we’ll respond shortly.
+    </div>
+
+    <form id="messageForm" class="chat-form">
+        <input type="text" id="chatName" name="chat_name" placeholder="Name*" required>
+        <input type="email" id="chatEmail" name="chat_email" placeholder="Email*" required>
+        <textarea id="chatMessage" name="chat_message" placeholder="How can we help?*" required></textarea>
+        <button type="submit">SEND</button>
+    </form>
+
+    <p style="font-size: 0.8em; text-align: center; color: gray; padding: 10px;">
+        This site is protected by reCAPTCHA and the 
+        <a href="#" style="color: blue; text-decoration: none;">Privacy Policy</a> 
+        and 
+        <a href="#" style="color: blue; text-decoration: none;">Terms of Service</a> apply.
+    </p>
+</div>
+
+ <!-- EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+    // Initialize EmailJS
+    (function() {
+        emailjs.init("your_public_key"); // Replace with your EmailJS Public Key
+    })();
+
+    document.getElementById("resume").addEventListener("change", function(event) {
+        let fileName = event.target.files[0] ? event.target.files[0].name : "(Attachments: 0)";
+        document.getElementById("fileName").innerText = fileName;
+    });
+
+    document.getElementById("jobApplicationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let formData = new FormData(this);
+        let file = formData.get("resume");
+
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            let base64File = reader.result.split(",")[1]; // Extract Base64 data
+
+            let templateParams = {
+                name: formData.get("name"),
+                phone: formData.get("phone"),
+                email: formData.get("email"),
+                message: formData.get("message"),
+                attachment: base64File,
+                filename: file.name
+            };
+
+            emailjs.send("your_service_id", "your_template_id", templateParams)
+                .then(response => {
+                    alert("Application submitted successfully!");
+                    document.getElementById("jobApplicationForm").reset();
+                    document.getElementById("fileName").innerText = "(Attachments: 0)";
+                })
+                .catch(error => {
+                    console.error("Error sending email:", error);
+                    alert("Error submitting application.");
+                });
+        };
+    });
+
+document.getElementById("messageForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Get form values
+    let name = document.getElementById("chatName").value;
+    let email = document.getElementById("chatEmail").value;
+    let message = document.getElementById("chatMessage").value;
+
+    // Template parameters
+    let templateParams = {
+        chat_name: name,
+        chat_email: email,
+        chat_message: message
+    };
+
+    // Send email using EmailJS
+    emailjs.send("your_service_id", "your_template_id", templateParams)
+        .then(response => {
+            alert("Your message has been sent successfully!");
+            document.getElementById("messageForm").reset();
+        })
+        .catch(error => {
+            console.error("Error sending message:", error);
+            alert("Failed to send the message. Please try again.");
+        });
+});
+
+    
          function toggleChat() {
              const chatWindow = document.getElementById("chatWindow");
              chatWindow.style.display = chatWindow.style.display === "block" ? "none" : "block";
