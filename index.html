@@ -243,6 +243,121 @@
             border-radius: 50%;
             cursor: pointer;
         }
+
+        /* Responsive Contact Section */
+@media (max-width: 768px) {
+    #contact {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+    }
+
+    .right-section img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .left-section {
+        order: 2; /* Moves the text content below the image */
+    }
+
+    .right-section {
+        order: 1; /* Moves the image to the top */
+    }
+}
+
+/* Navigation Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+/* Chat Button Responsive */
+@media (max-width: 480px) {
+    .chat-button {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .chat-window {
+        width: 90%;
+        right: 5%;
+        bottom: 60px;
+    }
+}
+
+/* Responsive Home Section */
+@media (max-width: 768px) {
+    #home {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    #home div {
+        width: 100%;
+    }
+
+    #home img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    #home .content {
+        order: 2; /* Moves text content below */
+    }
+
+    #home .image-container {
+        order: 1; /* Moves image to the top */
+    }
+}
+
+/* Responsive Careers Section */
+@media (max-width: 768px) {
+    #careers {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    #careers div {
+        width: 100%;
+    }
+
+    #careers img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    #careers .content {
+        order: 2; /* Moves text content below */
+    }
+
+    #careers .image-container {
+        order: 1; /* Moves image to the top */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -631,7 +746,7 @@
 <script>
     // Initialize EmailJS
     (function() {
-        emailjs.init("your_public_key"); // Replace with your EmailJS Public Key
+        emailjs.init("WSH5fK-vyznbJb_GG"); // Replace with your EmailJS Public Key
     })();
 
     document.getElementById("resume").addEventListener("change", function(event) {
@@ -659,7 +774,7 @@
                 filename: file.name
             };
 
-            emailjs.send("your_service_id", "your_template_id", templateParams)
+            emailjs.send("service_18rd9fi", "template_n6htqaj", templateParams)
                 .then(response => {
                     alert("Application submitted successfully!");
                     document.getElementById("jobApplicationForm").reset();
@@ -688,7 +803,7 @@ document.getElementById("messageForm").addEventListener("submit", function(event
     };
 
     // Send email using EmailJS
-    emailjs.send("your_service_id", "your_template_id", templateParams)
+    emailjs.send("service_18rd9fi", "template_gcx24l3", templateParams)
         .then(response => {
             alert("Your message has been sent successfully!");
             document.getElementById("messageForm").reset();
