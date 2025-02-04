@@ -7,6 +7,16 @@
         Ferox Tech Services</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
+        body {
+    padding-top: 70px; /* Matches navbar height */
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 60px; /* Reduce padding on mobile */
+    }
+}
+
             /* Smooth scrolling behavior */
     html {
         scroll-behavior: smooth;
@@ -90,7 +100,7 @@
         left: 0;
         width: 100%;
         background-color: #0a1744;
-        padding: 15px 0;
+        padding: 10px 0;
         z-index: 1000;
     }
 
@@ -271,21 +281,6 @@
     }
 }
 
-/* Navigation Responsive */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    nav ul li a {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-    }
-}
 
 /* Chat Button Responsive */
 @media (max-width: 480px) {
@@ -358,20 +353,66 @@
     }
 }
 
+/* Mobile styles for the navigation */
+@media screen and (max-width: 768px) {
+    nav {
+        position: relative;
+    }
+
+    /* Ensure hamburger button is visible */
+    .menu-toggle {
+        display: block !important; 
+        background: none;
+        border: none;
+        font-size: 2em;
+        color: white;
+        cursor: pointer;
+        position: fixed;
+        z-index: 1100;
+    }
+
+    /* Hide the nav menu by default on mobile */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        background-color: #0a1744;
+        width: 100%;
+        position: absolute;
+        top: 50px; /* Adjust this so it does not overlap */
+        left: 0;
+        padding: 15px 0;
+        z-index: 999;
+    }
+
+    /* When the menu is active, show it */
+    .nav-menu.active {
+        display: flex;
+    }
+}
+
+
+/* Desktop: Hide the hamburger button */
+.menu-toggle {
+    display: none;
+}
     </style>
 </head>
 <body>
     <header>
+        <button class="menu-toggle">☰</button> <!-- Hamburger Icon -->
         <nav>
-            <ul>
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About Us</a></li>
-                <li><a href="#service" class="nav-link">Service Offering</a></li>
-                <li><a href="#careers" class="nav-link">Careers</a></li>               
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#service">Service Offering</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
+    
+    
+    
     <main style="display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; margin: auto; padding: 20px; gap: 40px;">
     
     <!-- Header Section -->
@@ -737,6 +778,7 @@
  <!-- EmailJS Library -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 <script>
+
     // Initialize EmailJS
     (function() {
         emailjs.init("WSH5fK-vyznbJb_GG"); // Replace with your EmailJS Public Key
@@ -835,10 +877,27 @@ document.getElementById("messageForm").addEventListener("submit", function(event
                     }
                 });
             }
-    
+            
+            
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navMenu = document.querySelector(".nav-menu");
+            const navLinksA = document.querySelectorAll(".nav-menu a");
+
+            // Toggle menu on click
+            menuToggle.addEventListener("click", function () {
+                navMenu.classList.toggle("active");
+            });
+
+            // Close menu when a link is clicked
+            navLinksA.forEach(link => {
+                link.addEventListener("click", function () {
+                    navMenu.classList.remove("active");
+                });
+            });
             window.addEventListener("scroll", changeActiveLink);
         });
-    </script>
+
+   </script>
     </main>
     
     <footer>
