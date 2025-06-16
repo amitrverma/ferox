@@ -825,8 +825,62 @@
     </p>
 </div>
 
+<!-- Exit Intent Modal -->
+<div id="exitModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:2000; justify-content:center; align-items:center;">
+  <div style="background:white; padding:30px; border-radius:10px; width:300px; position:relative;">
+    <h3>Before you go...</h3>
+    <p>Leave your contact details and we’ll get back to you!</p>
+    <form id="exitForm">
+      <input type="text" id="exitName" name="name" placeholder="Name" required style="width:100%; margin:5px 0; padding:8px;">
+      <input type="email" id="exitEmail" name="email" placeholder="Email" required style="width:100%; margin:5px 0; padding:8px;">
+      <input type="text" id="exitPhone" name="phone" placeholder="Mobile Number" required style="width:100%; margin:5px 0; padding:8px;">
+      <button type="submit" style="width:100%; padding:10px; margin-top:10px; background:#0a1744; color:white;">Submit</button>
+    </form>
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px;">X</button>
+  </div>
+</div>
+
  <!-- EmailJS Library -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+let hasPrompted = false;
+
+document.addEventListener("mouseleave", function(e) {
+  if (e.clientY < 0 && !hasPrompted) {
+    document.getElementById("exitModal").style.display = "flex";
+    hasPrompted = true;
+  }
+});
+
+function closeModal() {
+  document.getElementById("exitModal").style.display = "none";
+}
+
+document.getElementById("exitForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById("exitName").value,
+    email: document.getElementById("exitEmail").value,
+    phone: document.getElementById("exitPhone").value
+  };
+
+  fetch("ferox-backend-ehchgtbpgkcqdngj.centralindia-01.azurewebsites.net/collect", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(result => {
+    alert("Thank you! We'll get in touch.");
+    closeModal();
+  })
+  .catch(err => {
+    alert("Error saving data");
+    console.error(err);
+  });
+});
+
+</script>
 <script>
 
     // Initialize EmailJS
