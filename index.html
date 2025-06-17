@@ -864,7 +864,7 @@ document.getElementById("exitForm").addEventListener("submit", function(e) {
     phone: document.getElementById("exitPhone").value
   };
 
-  fetch("ferox-backend-ehchgtbpgkcqdngj.centralindia-01.azurewebsites.net/collect", {
+  fetch("https://ferox-backend-ehchgtbpgkcqdngj.centralindia-01.azurewebsites.net/collect", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
